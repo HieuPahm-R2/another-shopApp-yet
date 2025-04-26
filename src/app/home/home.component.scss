@@ -1,0 +1,82 @@
+.group-header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgb(0, 0, 0, 0.15) 1px 1px 10px 0;
+  .header-logo {
+    width: 130px;
+  }
+  .group-navigation {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    .nav-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      background-image: linear-gradient(
+        to right,
+        oklch(53.18% 0.28 296.97),
+        oklch(69.02% 0.277 332.77)
+      );
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+    }
+  }
+}
+
+// container content
+.container {
+  .intro-section {
+    text-align: center;
+  }
+  .search-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .search-input {
+      width: 350px;
+      background-color: rgb(170, 177, 210);
+      margin-right: 10px;
+      border-color: rgb(255, 255, 255, 0.5);
+      color: aliceblue;
+    }
+    .product-category {
+      width: 200px;
+    }
+  }
+  .product-item {
+    background-color: rgb(19, 23, 42);
+    border: 1px solid rgb(35, 39, 62);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 330px;
+    .product-iamge {
+      width: 100%;
+      height: 330px;
+      margin-bottom: 10px;
+    }
+    .product-name {
+      color: white;
+    }
+    .product-description {
+      color: rgb(173, 178, 203);
+    }
+    .product-warranty {
+      color: rgb(242, 126, 212);
+    }
+    .product-price {
+      color: white;
+    }
+    .product-actions {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+  }
+}
