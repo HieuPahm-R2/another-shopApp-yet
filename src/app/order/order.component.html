@@ -1,0 +1,144 @@
+<app-header></app-header>
+<div class="container">
+  <div class="intro-section">
+    <h1>Đây là trang Order</h1>
+    <p>xác nhận đơn hàng trước khi đặt mua</p>
+  </div>
+  <form>
+    <div class="row">
+      <div
+        class="col-md-5"
+        style="background-color: cadetblue; border-radius: 10px"
+      >
+        <h2 class="product-header">Thông tin người nhận</h2>
+        <div class="mb-3">
+          <label class="form-label" for="fullname">Họ và tên</label>
+          <input class="form-control" id="fullname" type="text" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-control"
+            formControlName="email"
+            id="email"
+            type="text"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="phone">Số điện thoại</label>
+          <input
+            class="form-control"
+            placeholder="Số điện thoại"
+            required
+            type="text"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="address">Địa chỉ</label>
+          <input
+            class="form-control"
+            formControlName="address"
+            id="address"
+            placeholder="Địa chỉ"
+            required
+            type="text"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="note">Ghi chú</label>
+          <input
+            class="form-control"
+            placeholder="Ghi chú"
+            required
+            type="text"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="shippingMethod">Phương thức vận chuyển</label>
+          <select class="form-control" id="shippingMethod">
+            <option value="express">Nhanh (Express)</option>
+            <option value="normal">Thường (Normal)</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="paymentMethod">Phương thức thanh toán</label>
+          <select
+            class="form-control"
+            formControlName="payment_method"
+            id="paymentMethod"
+          >
+            <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+            <option value="other">Thanh toán khác</option>
+          </select>
+        </div>
+        <!-- </form> -->
+      </div>
+      <div class="col-md-7">
+        <h2 class="product-order">Sản phẩm đã đặt hàng</h2>
+        <table>
+          <thead>
+            <tr style="color: white">
+              <th scope="col" class="text-start">Sản phẩm</th>
+              <th scope="col" class="text-start">Số lượng</th>
+              <th scope="col" class="text-start">Đơn giá</th>
+              <th scope="col" class="text-start">Tổng giá</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="color: white">
+              <td>
+                <div class="product-info">
+                  <img
+                    src="https://cdn1.fahasa.com/media/catalog/product/_/_/___blue_archive_official_artworks_4_2023_07_03_11_30_20.jpg"
+                    class="product-image"
+                    alt=""
+                  />
+                  <span class="product-name">product name</span>
+                </div>
+              </td>
+              <td>2</td>
+              <td>100,000 VND</td>
+              <td>200,000 VND</td>
+            </tr>
+            <tr style="color: white">
+              <td>
+                <div class="product-info">
+                  <img
+                    src="https://cdn1.fahasa.com/media/catalog/product/_/_/___blue_archive_official_artworks_4_2023_07_03_11_30_20.jpg"
+                    class="product-image"
+                    alt=""
+                  />
+                  <span class="product-name">product name</span>
+                </div>
+              </td>
+              <td>2</td>
+              <td>100,000 VND</td>
+              <td>200,000 VND</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-start mt-3">
+          <h4 class="header-text text-end">Tổng giá: đ</h4>
+        </div>
+        <div class="mt-3">
+          <h4 class="product-header">Nhập coupon</h4>
+          <div class="input-group">
+            <input
+              class="form-control"
+              formControlName="couponCode"
+              placeholder="Nhập coupon"
+              type="text"
+            />
+            <button class="btn btn-gradient" type="button">Áp dụng</button>
+          </div>
+        </div>
+
+        <div class="text-start mt-3">
+          <button class="btn btn-gradient" type="button">Đặt hàng</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<app-footer></app-footer>

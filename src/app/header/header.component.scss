@@ -1,0 +1,37 @@
+.container-fluid {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgb(0, 0, 0, 0.15) 1px 1px 6px 0;
+  .header-logo {
+    width: 130px;
+  }
+  .group-navigation {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    .navi-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      background-image: linear-gradient(
+        to right,
+        oklch(53.18% 0.28 296.97),
+        oklch(69.02% 0.277 332.77)
+      );
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+    }
+  }
+}
+// ==========================
+.navbar {
+  padding: 0;
+  background-color: rgb(0, 0, 0, 0) !important;
+  .navbar-collapse {
+    margin-left: 5px;
+  }
+}

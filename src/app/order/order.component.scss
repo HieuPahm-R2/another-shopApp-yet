@@ -1,0 +1,42 @@
+table {
+  width: 100%;
+  border-radius: 10px;
+  border-collapse: separate;
+  border: 1px solid wheat;
+  border-spacing: 0;
+  background-color: rgb(12, 13, 52);
+}
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+.intro-section {
+  text-align: center;
+}
+.product-header {
+  color: rgb(192, 233, 255);
+}
+.product-order {
+  color: rgb(105, 244, 181);
+}
+.product-info {
+  display: flex;
+  align-items: center;
+  .product-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+  .product-name {
+    margin-right: 10px;
+  }
+}
+.btn-gradient {
+  background: linear-gradient(to right, rgb(225, 63, 180), rgb(126, 43, 237));
+  color: white;
+  border-radius: 20px;
+  width: 200px;
+}
