@@ -6,18 +6,17 @@ import { OrderComponent } from './order/order.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { LoginComponent } from "./login/login.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
+import { RegisterComponent } from "./register/register.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    HomeComponent,
     CommonModule,
     RouterOutlet,
-    HomeComponent,
-    OrderComponent,
-    OrderConfirmComponent,
-    LoginComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    RegisterComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

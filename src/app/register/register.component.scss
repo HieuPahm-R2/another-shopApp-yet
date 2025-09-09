@@ -1,11 +1,12 @@
-
-.container {
+.container-fluid {
+  background: #080761;
+  background: linear-gradient(90deg, rgba(8, 7, 97, 1) 0%, rgb(84, 105, 209) 53%, rgba(48, 104, 120, 1) 71%);
   color: white;
   height: 100vh;
 }
 
 .register-form {
-  background-color:  rgb(12, 12, 55);
+  background-color: rgb(12, 12, 55);
   border-radius: 10px;
   padding: 20px;
   max-width: 500px;
@@ -17,7 +18,7 @@
 
 .register-header {
   text-align: center;
-color: rgb(233, 66, 178);
+  color: rgb(233, 66, 178);
   margin-bottom: 20px;
 }
 
@@ -49,7 +50,7 @@ color: rgb(233, 66, 178);
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
-  color:green;
+  color: green;
   cursor: pointer;
 }
 
