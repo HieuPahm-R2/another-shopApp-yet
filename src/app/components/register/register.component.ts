@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { RegisterDTO } from '../dtos/register.dto';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +20,7 @@ export class RegisterComponent {
   address: string
   isAccepted: boolean
   dateOfBirth: Date
-  constructor(){
+  constructor(private router: Router, private userService: UserService){
     this.phoneNumber = ''
     this.password = ''
     this.retypePassword = ''
@@ -31,7 +34,32 @@ export class RegisterComponent {
 
   }
   register(){
+    const registerDto: RegisterDTO = {
+      'fullName': this.fullName,
+      'phone_number': this.phoneNumber,
+      'address': this.address,
+      'password': this.password,
+      'retype_password': this.retypePassword,
+      'date_of_birth': this.dateOfBirth,
+      'facebook_account_id': 0,
+      'google_account_id': 0,
+      'role_id': 1
+    }
+    this.userService.register(registerDto).subscribe({
+      next:(response: any) => {
+        const confirm =  window.confirm('Đăng ký thành công. Bấm "OK" để chuyển đến trang đăng nhập.')
+        if (confirm) {
+          this.router.navigate(['/login'])
+        }
+      },
+      complete: () => {
 
+      },
+      error: (error: any) => {
+         // debugger
+        alert(error?.error?.message ?? '')
+      }
+    })
   }
    checkPasswordsMatch() {
     if (this.password !== this.retypePassword) {

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { OrderComponent } from './order/order.component';
-import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
-import { LoginComponent } from "./login/login.component";
-import { ProductDetailComponent } from "./product-detail/product-detail.component";
-import { RegisterComponent } from "./register/register.component";
+import { HomeComponent } from './components/home/home.component';
+import { OrderComponent } from './components/order/order.component';
+import { OrderConfirmComponent } from './components/order-confirm/order-confirm.component';
+import { LoginComponent } from "./components/login/login.component";
+import { ProductDetailComponent } from "./components/product-detail/product-detail.component";
+import { RegisterComponent } from "./components/register/register.component";
 
 @Component({
   selector: 'app-root',
