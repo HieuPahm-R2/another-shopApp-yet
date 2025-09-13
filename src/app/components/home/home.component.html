@@ -4,25 +4,16 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-
         <div class="banner-blocks">
-
           <div class="banner-ad large bg-info block-1">
 
             <div class="swiper main-swiper">
               <div class="swiper-wrapper">
 
                 <div class="swiper-slide">
-                  <div class="row banner-content p-5">
-                    <div class="content-wrapper col-md-7">
-                      <div class="categories my-3">100% natural</div>
-                      <h3 class="display-4">Fresh Smoothie & Summer Juice</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
-                      <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop
-                        Now</a>
-                    </div>
-                    <div class="img-wrapper col-md-5">
-                      <img src="../../assets/images/product-thumb-1.png" class="img-fluid">
+                  <div class="row banner-content">
+                    <div class="col-md">
+                      <img src="../../assets/images/ms_banner_img1.jpg" class="img-fluid">
                     </div>
                   </div>
                 </div>
@@ -34,12 +25,11 @@
           </div>
 
           <div class="banner-ad bg-success-subtle block-2"
-            style="background:url('../../assets/images/post-thumb-3.jpg') no-repeat;background-position: right bottom">
+            style="background:url('../../assets/images/ms_banner_img2.jpg') no-repeat;background-position: right bottom">
             <div class="row banner-content p-5">
 
               <div class="content-wrapper col-md-7">
-                <div class="categories sale mb-3 pb-3">20% off</div>
-                <h3 class="banner-title">Fruits & Vegetables</h3>
+                <div class="categories text-danger sale mb-3 pb-3">20% off</div>
                 <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24">
                     <use xlink:href="#arrow-right"></use>
                   </svg></a>
@@ -49,12 +39,11 @@
           </div>
 
           <div class="banner-ad bg-danger block-3"
-            style="background:url('../../assets/images/ad-image-2.png') no-repeat;background-position: right bottom">
+            style="background:url('../../assets/images/ms_banner_img5.jpg') no-repeat;background-position: right bottom">
             <div class="row banner-content p-5">
 
               <div class="content-wrapper col-md-7">
-                <div class="categories sale mb-3 pb-3">15% off</div>
-                <h3 class="item-title">Baked Products</h3>
+                <div class="text-danger categories sale mb-3 pb-3">15% off</div>
                 <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24">
                     <use xlink:href="#arrow-right"></use>
                   </svg></a>
@@ -70,61 +59,6 @@
     </div>
   </div>
 </section>
-
-<section class="py-5 overflow-hidden">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-
-        <div class="section-header d-flex flex-wrap justify-content-between mb-5">
-          <h2 class="section-title">Category</h2>
-
-          <div class="d-flex align-items-center">
-            <a href="#" class="btn-link text-decoration-none">View All Categories →</a>
-            <div class="swiper-buttons">
-              <button class="swiper-prev category-carousel-prev btn btn-yellow">❮</button>
-              <button class="swiper-next category-carousel-next btn btn-yellow">❯</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="category-carousel">
-          <div class="swiper-wrapper">
-            <a href="index.html" class="nav-link category-item swiper-slide">
-              <img src="../../assets/images/icon-soft-drinks-bottle.png" alt="Category Thumbnail">
-              <h3 class="category-title">Fruits & Veges</h3>
-            </a>
-            <a href="index.html" class="nav-link category-item swiper-slide">
-              <img src="../../assets/images/icon-animal-products-drumsticks.png" alt="Category Thumbnail">
-              <h3 class="category-title">Fruits & Veges</h3>
-            </a>
-          </div>
-        </div>
-
-      </div>
-      <div class="col-md-3">
-        <div class="category-carousel">
-          <div class="swiper-wrapper">
-            <a href="index.html" class="nav-link category-item swiper-slide">
-              <img src="../../assets/images/icon-soft-drinks-bottle.png" alt="Category Thumbnail">
-              <h3 class="category-title">Fruits & Veges</h3>
-            </a>
-            <a href="index.html" class="nav-link category-item swiper-slide">
-              <img src="../../assets/images/icon-animal-products-drumsticks.png" alt="Category Thumbnail">
-              <h3 class="category-title">Fruits & Veges</h3>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <section class="py-5">
   <div class="container-fluid">
@@ -147,7 +81,6 @@
           <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
               <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-
                 @for (product of products; track product.id) {
                 <div class="col" (click)="onProductClick(product.id)">
                   <div class="product-item">
@@ -190,94 +123,6 @@
                 }
 
               </div>
-
-            </div>
-
-            <div class="tab-pane fade" id="nav-juices" role="tabpanel" aria-labelledby="nav-juices-tab">
-
-              <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-
-                <div class="col">
-                  <div class="product-item">
-                    <a href="#" class="btn-wishlist"><svg width="24" height="24">
-                        <use xlink:href="#heart"></use>
-                      </svg></a>
-                    <figure>
-                      <a href="index.html" title="Product Title">
-                        <img src="../../assets/images/thumb-avocado.png" class="tab-image">
-                      </a>
-                    </figure>
-                    <h3>Sunstar Fresh Melon Juice</h3>
-                    <span class="qty">1 Unit</span><span class="rating"><svg width="24" height="24"
-                        class="text-primary">
-                        <use xlink:href="#star-solid"></use>
-                      </svg> 4.5</span>
-                    <span class="price">$18.00</span>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="input-group product-qty">
-                        <span class="input-group-btn">
-                          <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus">
-                            <svg width="16" height="16">
-                              <use xlink:href="#minus"></use>
-                            </svg>
-                          </button>
-                        </span>
-                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1">
-                        <span class="input-group-btn">
-                          <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus">
-                            <svg width="16" height="16">
-                              <use xlink:href="#plus"></use>
-                            </svg>
-                          </button>
-                        </span>
-                      </div>
-                      <a href="#" class="nav-link">Add to Cart </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="product-item">
-                    <a href="#" class="btn-wishlist"><svg width="24" height="24">
-                        <use xlink:href="#heart"></use>
-                      </svg></a>
-                    <figure>
-                      <a href="index.html" title="Product Title">
-                        <img src="images/thumb-milk.png" class="tab-image">
-                      </a>
-                    </figure>
-                    <h3>Sunstar Fresh Melon Juice</h3>
-                    <span class="qty">1 Unit</span><span class="rating"><svg width="24" height="24"
-                        class="text-primary">
-                        <use xlink:href="#star-solid"></use>
-                      </svg> 4.5</span>
-                    <span class="price">$18.00</span>
-                    <div class="d-flex align-items-center justify-content-between">
-                      <div class="input-group product-qty">
-                        <span class="input-group-btn">
-                          <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus">
-                            <svg width="16" height="16">
-                              <use xlink:href="#minus"></use>
-                            </svg>
-                          </button>
-                        </span>
-                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1">
-                        <span class="input-group-btn">
-                          <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus">
-                            <svg width="16" height="16">
-                              <use xlink:href="#plus"></use>
-                            </svg>
-                          </button>
-                        </span>
-                      </div>
-                      <a href="#" class="nav-link">Add to Cart </a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <!-- / product-grid -->
-
             </div>
 
           </div>
@@ -322,44 +167,6 @@
     </div>
   </div>
 </section>
-
-<section class="py-5">
-  <div class="container-fluid">
-    <div class="row">
-
-      <div class="col-md-6">
-        <div class="banner-ad bg-danger mb-3"
-          style="background: url('images/ad-image-3.png');background-repeat: no-repeat;background-position: right bottom;">
-          <div class="banner-content p-5">
-
-            <div class="categories text-primary fs-3 fw-bold">Upto 25% Off</div>
-            <h3 class="banner-title">Luxa Dark Chocolate</h3>
-            <p>Very tasty & creamy vanilla flavour creamy muffins.</p>
-            <a href="#" class="btn btn-dark text-uppercase">Show Now</a>
-
-          </div>
-
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="banner-ad bg-info"
-          style="background: url('images/ad-image-4.png');background-repeat: no-repeat;background-position: right bottom;">
-          <div class="banner-content p-5">
-
-            <div class="categories text-primary fs-3 fw-bold">Upto 25% Off</div>
-            <h3 class="banner-title">Creamy Muffins</h3>
-            <p>Very tasty & creamy vanilla flavour creamy muffins.</p>
-            <a href="#" class="btn btn-dark text-uppercase">Show Now</a>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 
 <section class="py-5">
   <div class="container-fluid">
@@ -512,7 +319,7 @@
 <section class="py-5">
   <div class="container-fluid">
     <h2 class="my-5">People are also looking for</h2>
-    <a href="#" class="btn btn-warning me-2 mb-2">Blue diamon almonds</a>
+    <a href="#" class="btn btn-warning me-2 mb-2">Blue Archive Night LightNovel</a>
     <a href="#" class="btn btn-warning me-2 mb-2">Angie’s Boomchickapop Corn</a>
     <a href="#" class="btn btn-warning me-2 mb-2">Salty kettle Corn</a>
     <a href="#" class="btn btn-warning me-2 mb-2">Chobani Greek Yogurt</a>
@@ -522,8 +329,6 @@
     <a href="#" class="btn btn-warning me-2 mb-2">Sweet Vanilla Yogurt</a>
     <a href="#" class="btn btn-warning me-2 mb-2">Foster Farms Takeout Crispy wings</a>
     <a href="#" class="btn btn-warning me-2 mb-2">Warrior Blend Organic</a>
-    <a href="#" class="btn btn-warning me-2 mb-2">Chao Cheese Creamy</a>
-    <a href="#" class="btn btn-warning me-2 mb-2">Chicken meatballs</a>
   </div>
 </section>
 

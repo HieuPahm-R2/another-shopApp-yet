@@ -14,10 +14,13 @@ export class ProductService{
 
     }
     getProducts(
+            keyword: string,
+        categoryId: number,
          page: number, limit: number    
     ): Observable<Product[]>{
         const params = {
-            
+            keyword: keyword,
+            category_id: categoryId.toString(),
             page: page.toString(),
             limit: limit.toString()
         }   

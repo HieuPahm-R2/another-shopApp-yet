@@ -35,12 +35,12 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit() {
     this.currentPage = Number(this.localStorage?.getItem('currentProductPage')) || 0
-    this.getProducts(this.currentPage, this.itemsPerPage)
+    this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage)
     
   }
-    getProducts( page: number, limit: number) {
+    getProducts( keyword: string, selectedCategoryId: number,page: number, limit: number) {
     // debugger;
-    this.productService.getProducts(page, limit).subscribe({
+    this.productService.getProducts(keyword, selectedCategoryId,page, limit).subscribe({
       next: (response: any) => {
         // debugger;
         response.products.forEach((product: Product) => {
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
     // debugger;
     this.currentPage = page < 0 ? 0 : page
     this.localStorage?.setItem('currentProductPage', String(this.currentPage))
-    this.getProducts( this.currentPage, this.itemsPerPage)
+    this.getProducts( this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage)
   }
 
   generateVisiblePageArray(currentPage: number, totalPages: number): number[] {

@@ -1,56 +1,59 @@
 <app-header></app-header>
 <div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active"><a href="#">View Detail Product</a></li>
+    </ol>
+  </nav>
   <div class="intro-section">
-    <h1>Đây là trang chi tiết sản phẩm</h1>
-    <p>Sử dụng Bootstrap</p>
+    <h3>Đây là trang chi tiết sản phẩm</h3>
   </div>
   <div class="row">
     <div class="col-md-6">
       <div class="carousel slide" data-bs-ride="carousel" id="carouselExample">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="square-image">
-                <img src="https://cdn1.fahasa.com/media/flashmagazine/images/page_images/__ryoko_kui_rakugaki_doodles_book_day_dream_hour_harta_comix/2024_05_28_08_59_14_8-390x510.jpg" class="product-image" alt="Product Image">
-              </div>
+          @for (item of product?.product_images; track item.image_url; let i = $index) {
+          <div class="carousel-item" [ngClass]="{'active': i === this.currentImageIndex}">
+            <div class="square-image">
+              <img [src]="item.image_url" class="product-image" alt="Product Image">
             </div>
-            <div class="carousel-item active">
-                <div class="square-image">
-                  <img src="https://cdn1.fahasa.com/media/flashmagazine/images/page_images/__ryoko_kui_rakugaki_doodles_book_day_dream_hour_harta_comix/2024_05_28_08_59_14_8-390x510.jpg" class="product-image" alt="Product Image">
-                </div>
-              </div>
-          
+          </div>
+          }
+
         </div>
-        <button class="carousel-control-prev" data-bs-slide="prev"
-          data-bs-target="#carouselExample" type="button"
-        >
+        <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExample" type="button">
           <span aria-hidden="true" class="carousel-control-prev-icon"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" data-bs-slide="next"
-          data-bs-target="#carouselExample" type="button"
-        >
+        <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExample" type="button">
           <span aria-hidden="true" class="carousel-control-next-icon"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
       <div class="row">
         <div class="thumbnail-container">
-            <div class="thumbnail-item">
-              <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image" alt="Thumbnail Image">
-            </div>
-            <div class="thumbnail-item">
-                <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image" alt="Thumbnail Image">
-              </div>
-              <div class="thumbnail-item">
-                <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image" alt="Thumbnail Image">
-              </div>
-              <div class="thumbnail-item">
-                <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image" alt="Thumbnail Image">
-              </div>
-              <div class="thumbnail-item">
-                <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image" alt="Thumbnail Image">
-              </div>
-          
+          <div class="thumbnail-item">
+            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
+              alt="Thumbnail Image">
+          </div>
+          <div class="thumbnail-item">
+            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
+              alt="Thumbnail Image">
+          </div>
+          <div class="thumbnail-item">
+            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
+              alt="Thumbnail Image">
+          </div>
+          <div class="thumbnail-item">
+            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
+              alt="Thumbnail Image">
+          </div>
+          <div class="thumbnail-item">
+            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
+              alt="Thumbnail Image">
+          </div>
+
         </div>
       </div>
     </div>
@@ -66,9 +69,9 @@
         </div>
         <div class="product-quantity">
           <div class="border-wrapper">
-            <button >-</button>
+            <button>-</button>
             <input type="text">
-            <button >+</button>
+            <button>+</button>
           </div>
         </div>
       </div>
@@ -76,5 +79,3 @@
   </div>
 </div>
 <app-footer></app-footer>
-
-
