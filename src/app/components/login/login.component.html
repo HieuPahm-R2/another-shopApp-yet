@@ -6,15 +6,17 @@
                 <div class="form-group">
                     <label for="phoneNumber">Số Điện Thoại</label>
                     <input type="text" class="form-control" name="phone" id="phoneNumber" [(ngModel)]="phoneNumber"
-                        (input)="onPhoneNumberChange()" name="phone" (focus)="loginForm.form.markAsTouched()"
+                        name="phone" (focus)="loginForm.form.markAsTouched()"
                         placeholder="Nhập số điện thoại hoặc email" required>
                     <div class="divider-nospace"></div>
                 </div>
                 <div class="mt-5"></div>
                 <div class="form-group password-field">
                     <label for="password">Mật khẩu</label>
-                    <input name="password" placeholder="Ít nhất 8 ký tự" class="form-control" id="password">
-                    <i class="password-toggle fas"></i>
+                    <input name="password" placeholder="Ít nhất 8 ký tự" class="form-control" id="password"
+                        type="{{showPassword ? 'text' : 'password'}}" [(ngModel)]="password">
+                    <i class="password-toggle fas" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+                        (click)="togglePassword()"></i>
                     <div class="divider-nospace"></div>
                 </div>
                 <div class="form-group">
@@ -28,10 +30,10 @@
                     </div>
                 </div>
 
-                <button type="button" class="login-button">Đăng nhập</button>
+                <button type="button" class="login-button" (click)="login()">Đăng nhập</button>
                 <div class="divider"></div>
                 <p class="text-center">Bạn chưa có tài khoản? <span>
-                        <a class="register-link">Tạo tài khoản</a>
+                        <a class="register-link" (click)="registerAccount()">Tạo tài khoản</a>
                     </span></p>
 
             </div>

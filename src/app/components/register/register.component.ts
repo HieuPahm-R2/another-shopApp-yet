@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { RegisterDTO } from '../dtos/register.dto';
+import { RegisterDTO } from '../../dtos/register.dto';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +20,7 @@ export class RegisterComponent {
   address: string
   isAccepted: boolean
   dateOfBirth: Date
-  constructor(private router: Router, private userService: UserService){
+  constructor(private router: Router, private userService: UserService) {
     this.phoneNumber = ''
     this.password = ''
     this.retypePassword = ''
@@ -30,10 +30,10 @@ export class RegisterComponent {
     this.dateOfBirth = new Date()
     this.dateOfBirth.setFullYear(this.dateOfBirth.getFullYear() - 18)
   }
-  onPhoneChange(){
+  onPhoneChange() {
 
   }
-  register(){
+  register() {
     const registerDto: RegisterDTO = {
       'fullName': this.fullName,
       'phone_number': this.phoneNumber,
@@ -46,8 +46,8 @@ export class RegisterComponent {
       'role_id': 1
     }
     this.userService.register(registerDto).subscribe({
-      next:(response: any) => {
-        const confirm =  window.confirm('Đăng ký thành công. Bấm "OK" để chuyển đến trang đăng nhập.')
+      next: (response: any) => {
+        const confirm = window.confirm('Đăng ký thành công. Bấm "OK" để chuyển đến trang đăng nhập.')
         if (confirm) {
           this.router.navigate(['/login'])
         }
@@ -56,15 +56,15 @@ export class RegisterComponent {
 
       },
       error: (error: any) => {
-         // debugger
+        // debugger
         alert(error?.error?.message ?? '')
       }
     })
   }
-   checkPasswordsMatch() {
+  checkPasswordsMatch() {
     if (this.password !== this.retypePassword) {
       this.registerForm.form.controls['retypePassword']
-        .setErrors({'passwordMismatch': true})
+        .setErrors({ 'passwordMismatch': true })
     } else {
       this.registerForm.form.controls['retypePassword'].setErrors(null)
     }
@@ -81,7 +81,7 @@ export class RegisterComponent {
       }
 
       if (age < 18) {
-        this.registerForm.form.controls['dateOfBirth'].setErrors({'invalidAge': true})
+        this.registerForm.form.controls['dateOfBirth'].setErrors({ 'invalidAge': true })
       } else {
         this.registerForm.form.controls['dateOfBirth'].setErrors(null)
       }

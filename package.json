@@ -22,6 +22,7 @@
     "@angular/platform-server": "17.0.0",
     "@angular/router": "17.0.0",
     "@angular/ssr": "17.0.10",
+    "@auth0/angular-jwt": "5.2.0",
     "@fortawesome/fontawesome-free": "6.7.2",
     "bootstrap": "5.3.5",
     "class-transformer": "^0.5.1",

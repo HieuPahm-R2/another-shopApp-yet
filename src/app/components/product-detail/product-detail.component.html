@@ -13,65 +13,52 @@
     <div class="col-md-6">
       <div class="carousel slide" data-bs-ride="carousel" id="carouselExample">
         <div class="carousel-inner">
-          @for (item of product?.product_images; track item.image_url; let i = $index) {
+          @for (item of product?.product_images; track item?.image_url; let i = $index) {
           <div class="carousel-item" [ngClass]="{'active': i === this.currentImageIndex}">
             <div class="square-image">
-              <img [src]="item.image_url" class="product-image" alt="Product Image">
+              <img [src]="item?.image_url" class="product-image" alt="Product Image">
             </div>
           </div>
           }
 
         </div>
-        <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExample" type="button">
+        <button (click)="prevImage()" class="carousel-control-prev" data-bs-slide="prev"
+          data-bs-target="#carouselExample" type="button">
           <span aria-hidden="true" class="carousel-control-prev-icon"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExample" type="button">
+        <button (click)="nextImage()" class="carousel-control-next" data-bs-slide="next"
+          data-bs-target="#carouselExample" type="button">
           <span aria-hidden="true" class="carousel-control-next-icon"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
       <div class="row">
         <div class="thumbnail-container">
-          <div class="thumbnail-item">
-            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
-              alt="Thumbnail Image">
+          @for (image of product?.product_images; track image?.image_url; let i = $index) {
+          <div class="thumbnail-item" [ngClass]="{'active': i === currentImageIndex}" (click)="thumbnailOnClick(i)">
+            <img [src]="image?.image_url" class="thumbnail-image" alt="">
           </div>
-          <div class="thumbnail-item">
-            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
-              alt="Thumbnail Image">
-          </div>
-          <div class="thumbnail-item">
-            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
-              alt="Thumbnail Image">
-          </div>
-          <div class="thumbnail-item">
-            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
-              alt="Thumbnail Image">
-          </div>
-          <div class="thumbnail-item">
-            <img src="https://cdn1.fahasa.com/media/catalog/product/9/7/9784047376465.jpg" class="thumbnail-image"
-              alt="Thumbnail Image">
-          </div>
+          }
 
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="product-details">
-        <h2>Name Product</h2>
-        <p>Description: Lorem ipsum dolor sit amet consectetur.</p>
-        <p>Giá: 12.987.xxx VND</p>
-        <p>Tổng tiền:</p>
+        <h2>{{product?.name}}</h2>
+        <p>{{product?.description}}</p>
+        <p>Giá: {{ product?.price }} VND</p>
+        <p>Tổng tiền: {{getTotalMoney() | number:'1.2-2'}}</p>
         <div class="product-actions">
-          <button class="btn btn-primary">Thêm vào giỏ hàng</button>
-          <button class="btn btn-success">Mua ngay</button>
+          <button (click)="addToCart()" class="btn btn-primary">Thêm vào giỏ hàng</button>
+          <button (click)="clickBuy()" class="btn btn-success">Mua ngay</button>
         </div>
         <div class="product-quantity">
           <div class="border-wrapper">
-            <button>-</button>
-            <input type="text">
-            <button>+</button>
+            <button (click)="decreaseQuantity()">-</button>
+            <input [value]="quantity" type="text">
+            <button (click)="increaseQuantity()">+</button>
           </div>
         </div>
       </div>

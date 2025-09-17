@@ -47,9 +47,6 @@
             </div>
           </div>
 
-
-
-
         </div>
       </div>
 
@@ -57,24 +54,41 @@
         class="col-sm-8 col-lg-4 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
         <div class="support-box text-end d-none d-xl-block">
           <span class="fs-6 text-muted">For Support?</span>
-          <h5 class="mb-0">connect to HieuPahm-R2</h5>
         </div>
 
         <ul class="d-flex justify-content-end list-unstyled m-0">
           <li>
-            <a href="#" class="rounded-circle bg-light p-2 mx-1">
-              <svg width="24" height="24" viewBox="0 0 24 24">
-                <use xlink:href="#user"></use>
-              </svg>
-            </a>
+            @if (userResponse) {
+            <ng-container>
+              <ng-container ngbPopover="Tài khoản của tôi,Đơn mua,Đăng xuất" popoverTitle="User Actions"
+                triggers="click" [placement]="'bottom'">
+                <a href="#" class="rounded-circle bg-light p-2 mx-1" [ngbPopover]="popoverContent"
+                  (click)="togglePopover($event)">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#user"></use>
+                  </svg>
+
+                </a>
+                <span>
+                  {{ userResponse.fullname }}
+                </span>
+                <ng-template #popoverContent>
+                  <div class="popover-list">
+                    <a class="popover-item">Tài khoản của tôi</a>
+                    <a class="popover-item">Đơn mua</a>
+                    <a class="popover-item">Đăng xuất</a>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </ng-container>
+            } @else {
+            <ng-container>
+              <a class="nav-link" routerLink="/login">Đăng nhập</a>
+            </ng-container>
+            }
+
           </li>
-          <li>
-            <a href="#" class="rounded-circle bg-light p-2 mx-1">
-              <svg width="24" height="24" viewBox="0 0 24 24">
-                <use xlink:href="#heart"></use>
-              </svg>
-            </a>
-          </li>
+
           <li class="d-lg-none">
             <a href="#" class="rounded-circle bg-light p-2 mx-1" data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
@@ -93,11 +107,11 @@
           </li>
         </ul>
 
-        <div class="cart text-end d-none d-lg-block dropdown">
+        <div style="cursor: pointer;" class="cart text-end d-none d-lg-block dropdown" routerLink="/orders">
           <button class="border-0 bg-transparent d-flex flex-column gap-2 lh-1" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-            <span class="fs-6 text-muted dropdown-toggle">Your Cart</span>
-            <span class="cart-total fs-5 fw-bold">$1290.00</span>
+            <a routerLink="/orders" class="fs-6 text-muted dropdown-toggle">Your Cart</a>
+            <span class="cart-total fs-5 fw-bold">1,290,000 VND</span>
           </button>
         </div>
       </div>

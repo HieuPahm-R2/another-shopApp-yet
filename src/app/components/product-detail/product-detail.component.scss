@@ -3,9 +3,11 @@
   padding: 20px;
   text-align: center;
 }
-.square-image{
-    height: 300px;
+
+.square-image {
+  height: 300px;
 }
+
 .product-image {
   height: 100%;
   width: 100%;
@@ -42,7 +44,7 @@
 }
 
 .product-details {
-  color: white;
+  color: rgb(23, 22, 22);
   padding: 20px;
 }
 
@@ -70,18 +72,18 @@
 .product-quantity button {
   background-color: transparent;
   border: none;
-  color: white;
-  font-size: 16px;
+  color: rgb(23, 22, 22);
+  font-size: 20px;
   cursor: pointer;
 }
 
 .product-quantity input {
-  background-color: transparent;
+  background-color: blanchedalmond;
   border: none;
-  color: white;
+  color: rgb(14, 13, 13);
   font-size: 16px;
   text-align: center;
-  width: 40px;
+  width: 60px;
   margin: 0 10px;
 }
 

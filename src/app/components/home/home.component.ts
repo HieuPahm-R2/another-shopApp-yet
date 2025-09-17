@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-home',
   standalone: true,
   imports: [
-    HeaderComponent, 
+    HeaderComponent,
     FooterComponent, CommonModule,
     FormsModule],
   templateUrl: './home.component.html',
@@ -30,19 +30,19 @@ export class HomeComponent implements OnInit {
   keyword: string = ''
   localStorage?: Storage
 
-  constructor(private productService: ProductService, private router: Router){
+  constructor(private productService: ProductService, private router: Router) {
 
   }
   ngOnInit() {
     this.currentPage = Number(this.localStorage?.getItem('currentProductPage')) || 0
-    this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage)
-    
+    this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage);
   }
-    getProducts( keyword: string, selectedCategoryId: number,page: number, limit: number) {
-    // debugger;
-    this.productService.getProducts(keyword, selectedCategoryId,page, limit).subscribe({
+  getProducts(keyword: string, selectedCategoryId: number, page: number, limit: number) {
+    debugger;
+    this.productService.getProducts(keyword, selectedCategoryId, page, limit).subscribe({
+
       next: (response: any) => {
-        // debugger;
+        debugger;
         response.products.forEach((product: Product) => {
           product.url = `${environment.apiBaseUrl}/products/images/${product.thumbnail}`
         })
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
     // debugger;
     this.currentPage = page < 0 ? 0 : page
     this.localStorage?.setItem('currentProductPage', String(this.currentPage))
-    this.getProducts( this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage)
+    this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage)
   }
 
   generateVisiblePageArray(currentPage: number, totalPages: number): number[] {
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
 
   onProductClick(productId: number) {
     // debugger;
-    // Điều hướng đến t detail-product
-    this.router.navigate(['/products', productId])
+    this.router.navigate(['/products', productId]);
+
   }
 }

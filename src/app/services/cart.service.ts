@@ -33,7 +33,6 @@ export class CartService {
       // Nếu chưa có, thêm sản phẩm vào với số lượng là `quantity`
       this.cart.set(productId, quantity)
     }
-    // lưu trữ vào localStorage
     this.saveCartToLocalStorage()
   }
 
@@ -46,10 +45,9 @@ export class CartService {
     this.saveCartToLocalStorage()
   }
 
-  // xóa dữ liệu giỏ hàng
   clearCart(): void {
-    this.cart.clear() // Xóa toàn bộ trong giỏ
-    this.saveCartToLocalStorage() // Local Storage (trống)
+    this.cart.clear()
+    this.saveCartToLocalStorage()
   }
 
   private getCartKey(): string {
@@ -60,9 +58,7 @@ export class CartService {
 
   }
 
-  // Lưu vào localStorage
   private saveCartToLocalStorage(): void {
-    // debugger
     this.localStorage?.setItem(this.getCartKey(), JSON.stringify(Array.from(this.cart.entries())))
   }
 }
