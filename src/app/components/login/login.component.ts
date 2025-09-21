@@ -8,6 +8,8 @@ import { TokenService } from '../../services/token.service';
 import { Role } from '../../models/role';
 import { UserResponse } from '../../res/user.response';
 import { CommonModule } from '@angular/common'
+import { switchMap } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -27,12 +29,11 @@ export class LoginComponent {
     id: 1,
     name: "user"
   }
-
   constructor(
     private router: Router,
     private userService: UserService,
+    private toastr: ToastrService,
     private tokenService: TokenService) {
-
   }
   registerAccount() {
     // debugger
@@ -44,45 +45,47 @@ export class LoginComponent {
       password: this.password,
       role_id: this.selectedRole?.id
     }
-    this.userService.login(loginDTO).subscribe({
-      next: (response: LoginResponse) => {
-        const { token } = response
+    this.userService.login(loginDTO).pipe(
+      switchMap((response: LoginResponse) => {
+        const { token } = response;
         if (this.rememberMe) {
-          this.tokenService.setToken(token)
-          this.userService.getUserDetail(token).subscribe({
-            next: (response: any) => {
-              this.userResponse = {
-                ...response,
-                date_of_birth: new Date(response.date_of_birth)
-              }
-              this.userService.saveUserResponseToLs(this.userResponse)
-              if (this.userResponse?.role.name === 'admin') {
-                this.router.navigate(['/admin'])
-              } else if (this.userResponse?.role.name === 'user') {
-                this.router.navigate(['/'])
-              }
-            },
-            complete: () => {
-
-            },
-            error: (error: any) => {
-              alert(error.error)
-            }
-          })
+          this.tokenService.setToken(token);
+          // switchMap sẽ chuyển sang một observable mới là getUserDetail
+          return this.userService.getUserDetail(token);
         }
+        // Nếu không "rememberMe", trả về một observable rỗng để kết thúc chuỗi
+        return [];
+      })
+    ).subscribe({
+      next: (response1: any) => {
+        // còn một subscription duy nhất để xử lý
+        this.userResponse = {
+          ...response1,
+          date_of_birth: new Date(response1.date_of_birth)
+        };
+        this.userService.saveUserResponseToLs(this.userResponse);
+        this.toastr.success('everything is done', 'Login successfully', {
+          timeOut: 3000,
+        });
+        this.router.navigate(['/']);
+        // if (this.userResponse?.role.name === 'admin') {
+        //   this.router.navigate(['/admin']);
+        // } else if (this.userResponse?.role.name === 'user') {
 
-      },
-      complete: () => {
-
+        // }
       },
       error: (error: any) => {
-        // debugger;
-        alert(error.error.message)
+        // Xử lý lỗi cho cả hai request (login và getUserDetail) tại một nơi
+        this.toastr.error('everything is broken', 'bad credetials', {
+          timeOut: 3000,
+        });
       }
-    })
+    });
   }
-
   togglePassword() {
     this.showPassword = !this.showPassword
   }
 }
+
+
+

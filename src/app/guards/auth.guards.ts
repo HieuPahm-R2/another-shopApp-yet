@@ -18,7 +18,6 @@ export class AuthGuard {
             this.router.navigate(['/login'])
             return false
         }
-
     }
 }
 // Sử dụng functional guard như sau:

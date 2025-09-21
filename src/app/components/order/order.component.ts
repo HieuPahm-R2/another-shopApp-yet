@@ -11,6 +11,9 @@ import { TokenService } from '../../services/token.service';
 import { OrderService } from '../../services/order.service';
 import { environment } from '../../env/environments';
 import { Product } from '../../models/product';
+import { Order } from '../../models/order';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-order',
@@ -50,6 +53,9 @@ export class OrderComponent implements OnInit {
   private productService = inject(ProductService)
   private orderService = inject(OrderService)
   private tokenService = inject(TokenService)
+  private router = inject(Router)
+  private toastr = inject(ToastrService)
+
   constructor() {
     // Tạo FormGroup và các FormControl tương ứng
     this.orderForm = this.formBuilder.group({
@@ -68,13 +74,13 @@ export class OrderComponent implements OnInit {
     this.orderData.user_id = this.tokenService.getUserId()
     this.cart = this.cartService.getCart()
     const productIds = Array.from(this.cart.keys())  // Chuyển danh sách ID từ Map giỏ hàng
-    // debugger
+    debugger
     if (productIds.length === 0) {
       return;
     }
     this.productService.getProductsByIds(productIds).subscribe({
       next: (products) => {
-        // debugger
+        debugger
         // Lấy thông tin sản phẩm và số lượng từ danh sách sản phẩm và giỏ hàng
         this.cartItems = productIds.map((productId) => {
           const product = products.find((p) => p.id === productId)
@@ -107,6 +113,27 @@ export class OrderComponent implements OnInit {
         product_id: item.product.id,
         quantity: item.quantity
       }))
+      this.orderData.total_money = this.totalAmount
+      // Done
+      this.orderService.placeOrder(this.orderData).subscribe({
+        next: (response: Order) => {
+          this.toastr.success('everything is done', 'Thanks for your regarding', {
+            timeOut: 3000,
+          });
+          this.cartService.clearCart()
+          this.router.navigate(['/'])
+        },
+        complete: () => {
+          // debugger;
+          this.calculateTotal()
+        },
+        error: (error: any) => {
+          // debugger;
+          this.toastr.error('everything is broken', 'Major Error', {
+            timeOut: 3000,
+          });
+        }
+      })
     }
   }
   decreaseQuantity(index: number): void {

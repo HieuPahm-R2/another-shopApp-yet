@@ -7,12 +7,15 @@ import { environment } from '../../env/environments';
 import { Router, RouterModule } from '@angular/router';
 import { UserResponse } from '../../res/user.response';
 import { UserService } from '../../services/user.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TokenService } from '../../services/token.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule, NgbModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -33,7 +36,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private searchService: SearchBarService, private router: Router, private userService: UserService) { }
+  constructor(
+    private searchService: SearchBarService,
+    private router: Router,
+    private userService: UserService,
+    private tokenService: TokenService,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.userResponse = this.userService.getUserResponseFromLocalStorage()
@@ -74,6 +83,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.search.emit(this.searchControl.value || '');
     this.showSuggestions = false;
+  }
+  togglePopover(event: Event): void {
+    event.preventDefault()
+    this.isPopoverOpen = !this.isPopoverOpen
+  }
+  handleClickItem(index: number): void {
+    if (index === 0) {
+      debugger
+      this.router.navigate(['/user-profile'])
+    } else if (index === 2) {
+      this.userService.removeUserFromLocalStorage()
+      this.tokenService.removeToken()
+      this.userResponse = this.userService.getUserResponseFromLocalStorage()
+      this.toastr.success('Everything is done', 'Logout successfully', {
+        timeOut: 3000,
+      });
+    }
+    this.isPopoverOpen = false // Close the popover after clicking an item
   }
 
 }

@@ -83,6 +83,7 @@ export class ProductDetailComponent implements OnInit {
     this.isPressedAdd = true
     if (this.product) {
       this.cartService.addToCart(this.product.id, this.quantity)
+      console.log("gkkkkk")
     } else {
       console.error('Action Add Error...')
     }

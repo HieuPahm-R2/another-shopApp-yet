@@ -1,8 +1,7 @@
 <header>
   <div class="container-fluid">
-    <div class="row py-3 border-bottom">
-
-      <div class="col-sm-3 col-lg-2 text-center text-sm-start">
+    <div class="row py-1 border-bottom">
+      <div class="col-sm-3 col-lg-2 text-center text-sm-start mt-2">
         <div class="main-logo">
           <a href="index.html">
             <img src="../../assets/logo.webp" alt="logo" class="img-fluid">
@@ -22,7 +21,7 @@
             </select>
           </div>
           <!--Search-->
-          <div class="col-11 col-md-7 search-container">
+          <div class="col-8 col-md-6 search-container">
             <form id="search-form" class="text-center">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -43,7 +42,6 @@
 
           <div class="overlay-suggestion">
             <div>
-
             </div>
           </div>
 
@@ -51,7 +49,7 @@
       </div>
 
       <div
-        class="col-sm-8 col-lg-4 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
+        class="col-sm-8 col-lg-5 d-flex justify-content-end gap-3 align-items-center mt-3 mt-sm-0 justify-content-center justify-content-sm-end">
         <div class="support-box text-end d-none d-xl-block">
           <span class="fs-6 text-muted">For Support?</span>
         </div>
@@ -67,16 +65,15 @@
                   <svg width="24" height="24" viewBox="0 0 24 24">
                     <use xlink:href="#user"></use>
                   </svg>
-
                 </a>
                 <span>
-                  {{ userResponse.fullname }}
+                  Hello,{{ userResponse.fullname }}
                 </span>
                 <ng-template #popoverContent>
                   <div class="popover-list">
-                    <a class="popover-item">Tài khoản của tôi</a>
-                    <a class="popover-item">Đơn mua</a>
-                    <a class="popover-item">Đăng xuất</a>
+                    <a class="popover-item" (click)="handleClickItem(0)">Tài khoản của tôi</a>
+                    <a class="popover-item" (click)="handleClickItem(1)">Đơn mua</a>
+                    <a class="popover-item" (click)="handleClickItem(2)">Đăng xuất</a>
                   </div>
                 </ng-template>
               </ng-container>
@@ -111,7 +108,7 @@
           <button class="border-0 bg-transparent d-flex flex-column gap-2 lh-1" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
             <a routerLink="/orders" class="fs-6 text-muted dropdown-toggle">Your Cart</a>
-            <span class="cart-total fs-5 fw-bold">1,290,000 VND</span>
+            <span class="cart-total fs-6 fw-bold">? VND</span>
           </button>
         </div>
       </div>

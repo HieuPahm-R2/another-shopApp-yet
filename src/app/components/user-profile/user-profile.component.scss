@@ -1,0 +1,36 @@
+.container {
+    color: rgb(34, 31, 31);
+}
+
+.intro-section {
+    color: rgb(40, 38, 38);
+    padding: 20px;
+    text-align: center;
+}
+
+.product-header {
+    color: rgb(79, 136, 183);
+}
+
+.form-control {
+    background-color: rgb(204, 205, 209);
+    border: 1px solid rgb(29, 33, 54);
+    color: white;
+}
+
+.form-control:focus {
+    border-color: white;
+    background-color: rgb(46, 51, 81);
+}
+
+.form-label {
+    color: rgb(20, 20, 20);
+}
+
+.product-header {
+    color: rgb(34, 56, 75);
+}
+
+.product-order {
+    color: rgb(29, 33, 54);
+}
