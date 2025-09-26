@@ -25,10 +25,7 @@ export class LoginComponent {
   showPassword: boolean = false
   rememberMe: boolean = true
   userResponse?: UserResponse
-  selectedRole: Role = {
-    id: 1,
-    name: "user"
-  }
+
   constructor(
     private router: Router,
     private userService: UserService,
@@ -43,7 +40,6 @@ export class LoginComponent {
     const loginDTO: LoginDTO = {
       phone_number: this.phoneNumber,
       password: this.password,
-      role_id: this.selectedRole?.id
     }
     this.userService.login(loginDTO).pipe(
       switchMap((response: LoginResponse) => {
@@ -67,12 +63,12 @@ export class LoginComponent {
         this.toastr.success('everything is done', 'Login successfully', {
           timeOut: 3000,
         });
-        this.router.navigate(['/']);
-        // if (this.userResponse?.role.name === 'admin') {
-        //   this.router.navigate(['/admin']);
-        // } else if (this.userResponse?.role.name === 'user') {
 
-        // }
+        if (this.userResponse?.role.name === 'admin') {
+          this.router.navigate(['/admin']);
+        } else if (this.userResponse?.role.name === 'user') {
+          this.router.navigate(['/']);
+        }
       },
       error: (error: any) => {
         // Xử lý lỗi cho cả hai request (login và getUserDetail) tại một nơi

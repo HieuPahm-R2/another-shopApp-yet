@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { environment } from "../env/environments";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { OrderDTO } from "../dtos/order.dto";
 import { Observable } from "rxjs";
+import { OrderResponse } from "../res/order.response";
 
 
 @Injectable({
@@ -10,6 +11,7 @@ import { Observable } from "rxjs";
 })
 export class OrderService {
     private apiUrl = `${environment.apiBaseUrl}/orders`
+    private apiGetAllOrders = `${environment.apiBaseUrl}/orders/get-orders-by-keyword`
 
     constructor(private http: HttpClient) {
 
@@ -20,5 +22,21 @@ export class OrderService {
     deleteOrder(orderId: number): Observable<any> {
         const url = `${environment.apiBaseUrl}/orders/${orderId}`
         return this.http.delete(url, { responseType: 'text' })
+    }
+    getOrderById(orderId: number): Observable<any> {
+        const url = `${environment.apiBaseUrl}/orders/${orderId}`
+        return this.http.get(url)
+    }
+    updateOrder(orderId: number, orderData: OrderDTO): Observable<any> {
+        const url = `${environment.apiBaseUrl}/orders/${orderId}`;
+        return this.http.put(url, orderData);
+    }
+
+    getAllOrders(keyword: string, page: number, limit: number): Observable<OrderResponse[]> {
+        const params = new HttpParams()
+            .set('keyword', keyword)
+            .set('page', page.toString())
+            .set('limit', limit.toString())
+        return this.http.get<any>(this.apiGetAllOrders, { params })
     }
 }
