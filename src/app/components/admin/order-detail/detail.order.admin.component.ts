@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { Observable } from 'rxjs';
 import { OrderResponse } from '../../../res/order.response';
 import { OrderService } from '../../../services/order.service';
 import { environment } from '../../../env/environments';
@@ -14,7 +12,12 @@ import { OrderDTO } from '../../../dtos/order.dto';
 @Component({
   selector: 'app-detail-order-admin',
   templateUrl: './detail.order.admin.component.html',
-  styleUrls: ['./detail.order.admin.component.scss']
+  styleUrls: ['./detail.order.admin.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule
+  ]
 })
 
 export class DetailOrderAdminComponent implements OnInit {

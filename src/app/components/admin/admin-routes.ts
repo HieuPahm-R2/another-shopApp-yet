@@ -9,7 +9,7 @@ import { CategoryAdminComponent } from './category/category.admin.component'
 import { DetailOrderAdminComponent } from './order-detail/detail.order.admin.component'
 
 
-export const routes: Routes = [
+export const adminRoutes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
@@ -38,11 +38,11 @@ export const routes: Routes = [
     ]
   }
 ]
-@NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule]
-})
-export class AdminRoutingModule { }
+// @NgModule({
+//   imports: [
+//     RouterModule.forChild(routes)
+//   ],
+//   exports: [RouterModule]
+// })
+// export class AdminRoutingModule { }
 

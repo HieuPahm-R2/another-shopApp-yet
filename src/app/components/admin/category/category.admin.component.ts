@@ -4,6 +4,8 @@ import { Router } from '@angular/router'
 
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
+import { Category } from '../../../models/category'
+import { CategoryService } from '../../../services/category.service'
 
 
 @Component({

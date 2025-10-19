@@ -11,7 +11,8 @@ import { OrderAdminComponent } from './order/order.admin.component';
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule, OrderAdminComponent],
+    RouterModule,
+    OrderAdminComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
 })

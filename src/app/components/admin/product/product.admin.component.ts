@@ -3,11 +3,12 @@ import { Router } from '@angular/router'
 import { DOCUMENT } from '@angular/common'
 
 import { Location } from '@angular/common'
-import { environment } from '../../../../environments/environment'
+
 import { Product } from '../../../models/product'
 import { ProductService } from '../../../services/product.service'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
+import { environment } from '../../../env/environments'
 
 @Component({
   selector: 'app-product-admin',
